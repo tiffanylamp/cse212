@@ -71,4 +71,45 @@ public static class Arrays
         
         data.InsertRange(0, elementsToMove);
     }
+
+    // PART TWO 
+    // Using List Slicing with GetRange
+    public static void RotateListRight(List<int> data, int amount)
+    {
+        // PLAN FOR SOLVING THIS PROBLEM (List Slicing Approach):
+        // Step 1: "rotate right" again:
+        //         - Take the last 'amount' elements from the end
+        //         - Move them to the front of the list
+        //         Example: {1,2,3,4,5,6,7,8,9} rotated right by 3
+        //                  Last 3 elements: {7,8,9}
+        //                  Result: {7,8,9,1,2,3,4,5,6}
+        //
+        // Step 2: Calculate where to split the list
+        //         - Split point = data.Count - amount
+        //         - Everything from split point to end goes to front
+        //         - Everything before split point goes to back
+        //
+        // Step 3: Use GetRange to slice the list into two parts:
+        //         - Part 1 (goes to back): data.GetRange(0, splitPoint)
+        //         - Part 2 (goes to front): data.GetRange(splitPoint, amount)
+        //
+        // Step 4: Clear the original list
+        //
+        // Step 5: Add Part 2 first (the elements that rotate to front)
+        //
+        // Step 6: Add Part 1 second (the elements that stay in back)
+        
+        
+        int splitPoint = data.Count - amount;
+        
+        List<int> frontPart = data.GetRange(0, splitPoint);
+
+        List<int> backPart = data.GetRange(splitPoint, amount);
+        
+        data.Clear();
+        
+        data.AddRange(backPart);
+        
+        data.AddRange(frontPart);
+    }
 }
