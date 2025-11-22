@@ -21,8 +21,36 @@ public static class SetsAndMaps
     /// <param name="words">An array of 2-character words (lowercase, no duplicates)</param>
     public static string[] FindPairs(string[] words)
     {
-        // TODO Problem 1 - ADD YOUR CODE HERE
-        return [];
+        // Problem 1 
+
+        var seen = new HashSet<string>();
+        var pairs = new List<string>();
+
+        foreach (var word in words)
+        {
+            // Skiping palindromes 
+            if (word[0] == word[1])
+            {
+                seen.Add(word);
+                continue;
+            }
+
+            // Create the reverse of the current word
+            var reverse = new string(new char[] { word[1], word[0] });
+
+            // Checking if the reverse exists in the seen set
+            if (seen.Contains(reverse))
+            {
+                // Found a symmetric pair
+                pairs.Add($"{reverse} & {word}");
+            }
+
+            // Add current word to the seen set
+            seen.Add(word);
+        }
+
+        return pairs.ToArray();
+        
     }
 
     /// <summary>
@@ -38,11 +66,30 @@ public static class SetsAndMaps
     /// <returns>fixed array of divisors</returns>
     public static Dictionary<string, int> SummarizeDegrees(string filename)
     {
+        // Problem 2
         var degrees = new Dictionary<string, int>();
+        
         foreach (var line in File.ReadLines(filename))
         {
             var fields = line.Split(",");
-            // TODO Problem 2 - ADD YOUR CODE HERE
+            
+            // Checking if the line has at least 4 columns
+            if (fields.Length >= 4)
+            {
+                // Get the degree from the 4th column- index 3
+                var degree = fields[3].Trim();
+                
+                if (degrees.ContainsKey(degree))
+                {
+                    // Degree already in Map - increment the count
+                    degrees[degree]++;
+                }
+                else
+                {
+                    // New degree - add to Map with count of 1
+                    degrees[degree] = 1;
+                }
+            }
         }
 
         return degrees;
@@ -64,10 +111,64 @@ public static class SetsAndMaps
     /// Reminder: You can access a letter by index in a string by 
     /// using the [] notation.
     /// </summary>
-    public static bool IsAnagram(string word1, string word2)
+     public static bool IsAnagram(string word1, string word2)
     {
-        // TODO Problem 3 - ADD YOUR CODE HERE
-        return false;
+        //Problem 3
+        // Removing spaces and converting to lowercase for comparison
+        word1 = word1.Replace(" ", "").ToLower();
+        word2 = word2.Replace(" ", "").ToLower();
+        
+        // We know that If lengths are different after removing spaces, they can't be anagrams
+        if (word1.Length != word2.Length)
+        {
+            return false;
+        }
+        
+        // Using Dictionary to count the character frequencies
+        var charCount = new Dictionary<char, int>();
+        
+        // Counting all characters in word1
+        // Dictionary operations (Add, access by key) are O(1) on average
+        foreach (var c in word1)
+        {
+            if (charCount.ContainsKey(c))
+            {
+                charCount[c]++;
+            }
+            else
+            {
+                charCount[c] = 1;
+            }
+        }
+        
+        // Subtract character counts based on word2
+        foreach (var c in word2)
+        {
+            if (!charCount.ContainsKey(c))
+            {
+                // Character in word2 not found in word1
+                return false;
+            }
+            
+            charCount[c]--;
+            
+            if (charCount[c] < 0)
+            {
+                return false;
+            }
+        }
+        
+        // All counts should be zero if they're anagrams
+        // The Map ensures I've matched all characters with correct frequencies
+        foreach (var count in charCount.Values)
+        {
+            if (count != 0)
+            {
+                return false;
+            }
+        }
+        
+        return true;
     }
 
     /// <summary>

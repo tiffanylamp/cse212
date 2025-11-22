@@ -32,7 +32,30 @@ public class Maze
     /// </summary>
     public void MoveLeft()
     {
-        // FILL IN CODE
+        var currentPosition = (_currX, _currY);
+            
+            // Access the Map 
+            if (_mazeMap.ContainsKey(currentPosition))
+            {
+                var directions = _mazeMap[currentPosition];
+                
+                // Check index 0 for left direction
+                if (directions[0])
+                {
+                    // Can move left - decrease x coordinate
+                    _currX--;
+                }
+                else
+                {
+                    // Wall detected - cannot move left
+                    throw new InvalidOperationException("Can't go that way!");
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException("Can't go that way!");
+            }
+        
     }
 
     /// <summary>
@@ -41,7 +64,29 @@ public class Maze
     /// </summary>
     public void MoveRight()
     {
-        // FILL IN CODE
+        var currentPosition = (_currX, _currY);
+            
+            // Access the Map 
+            if (_mazeMap.ContainsKey(currentPosition))
+            {
+                var directions = _mazeMap[currentPosition];
+                
+                // Check index 1 for right direction
+                if (directions[1])
+                {
+                    // Can move right - increase x coordinate
+                    _currX++;
+                }
+                else
+                {
+                    // Wall detected - cannot move right
+                    throw new InvalidOperationException("Can't go that way!");
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException("Can't go that way!");
+            }
     }
 
     /// <summary>
@@ -50,7 +95,29 @@ public class Maze
     /// </summary>
     public void MoveUp()
     {
-        // FILL IN CODE
+        var currentPosition = (_currX, _currY);
+            
+            // Access the Map
+            if (_mazeMap.ContainsKey(currentPosition))
+            {
+                var directions = _mazeMap[currentPosition];
+                
+                // Check index 2 for up direction
+                if (directions[2])
+                {
+                    // Can move up - decrease y coordinate
+                    _currY--;
+                }
+                else
+                {
+                    // Wall detected - cannot move up
+                    throw new InvalidOperationException("Can't go that way!");
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException("Can't go that way!");
+            }
     }
 
     /// <summary>
@@ -59,7 +126,29 @@ public class Maze
     /// </summary>
     public void MoveDown()
     {
-        // FILL IN CODE
+        var currentPosition = (_currX, _currY);
+            
+            // Access the Map 
+            if (_mazeMap.ContainsKey(currentPosition))
+            {
+                var directions = _mazeMap[currentPosition];
+                
+                // Check index 3 for down direction
+                if (directions[3])
+                {
+                    // Can move down - increase y coordinate
+                    _currY++;
+                }
+                else
+                {
+                    // Wall detected - cannot move down
+                    throw new InvalidOperationException("Can't go that way!");
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException("Can't go that way!");
+            }
     }
 
     public string GetStatus()
