@@ -13,7 +13,12 @@ public class Node
     {
         // TODO Start Problem 1
 
-        if (value < Data)
+        if (value == Data)
+        {
+            // Value already exists, don't insert a duplicate
+            return;
+        }
+        else if (value < Data)
         {
             // Insert to the left
             if (Left is null)
@@ -34,7 +39,27 @@ public class Node
     public bool Contains(int value)
     {
         // TODO Start Problem 2
-        return false;
+        if (value == Data)
+        {
+            // If the value has been found
+            return true;
+        }
+        else if (value < Data)
+        {
+            // Search in the left subtree
+            if (Left is null)
+                return false;
+            else
+                return Left.Contains(value);
+        }
+        else
+        {
+            // Search in the right subtree
+            if (Right is null)
+                return false;
+            else
+                return Right.Contains(value);
+        }
     }
 
     public int GetHeight()
