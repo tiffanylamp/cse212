@@ -65,6 +65,9 @@ public class Node
     public int GetHeight()
     {
         // TODO Start Problem 4
-        return 0; // Replace this line with the correct return statement(s)
+        int leftHeight = Left?.GetHeight() ?? 0; //If left exists, recursively get its height, if left is null, use 0
+        int rightHeight = Right?.GetHeight() ?? 0; //If right exists, recursively get its height, if right is null, use 0
+        
+        return 1 + Math.Max(leftHeight, rightHeight);
     }
 }
