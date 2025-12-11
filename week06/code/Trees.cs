@@ -50,7 +50,7 @@ public static class Trees
     {
         // TODO Start Problem 5  
 
-        //This is an attempt
+        //Second attempt
 
         // Base case: if the range is invalid, stop recursion
         if (first > last)
@@ -64,10 +64,10 @@ public static class Trees
         // Insert the middle value into the BST
         bst.Insert(sortedNumbers[middle]);
         
-        // Recursively insert the middle of the left half
+        // Recursively inserting the middle of the left half
         InsertMiddle(sortedNumbers, first, middle - 1, bst);
         
-        // Recursively insert the middle of the right half
+        // Recursively insertinserting the middle of the right half
         InsertMiddle(sortedNumbers, middle + 1, last, bst);
         }
 }

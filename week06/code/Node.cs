@@ -15,7 +15,7 @@ public class Node
 
         if (value == Data)
         {
-            // Value already exists, don't insert a duplicate
+            // When value already exists, don't insert a duplicate
             return;
         }
         else if (value < Data)
