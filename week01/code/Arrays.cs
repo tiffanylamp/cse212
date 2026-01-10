@@ -17,6 +17,7 @@ public static class Arrays
         // Step 4: Store each calculated multiple in the array at position i
         // Step 5: Return the completed array
 
+
         // Step 1: Creating an array to hold the multiples
         double[] multiples = new double[length];
         
