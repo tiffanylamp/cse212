@@ -43,7 +43,7 @@ public class LinkedList : IEnumerable<int>
     {
         // If the list has only one item in it, then set head and tail 
         // to null resulting in an empty list.  This condition will also
-        // cover an empty list.  Its okay to set to null again.
+        // cover an empty list.  
         if (_head == _tail)
         {
             _head = null;
