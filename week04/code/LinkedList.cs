@@ -72,7 +72,7 @@ public class LinkedList : IEnumerable<int>
     /// </summary>
     public void InsertAfter(int value, int newValue)
     {
-        // Search for the node that matches 'value' by starting at the 
+        // Searching for the node that matches 'value' by starting at the 
         // head of the list.
         Node? curr = _head;
         while (curr is not null)
@@ -96,7 +96,7 @@ public class LinkedList : IEnumerable<int>
                     curr.Next = newNode; // Connect the node containing 'value' to the new node
                 }
 
-                return; // We can exit the function after we insert
+                return; 
             }
 
             curr = curr.Next; // Go to the next node to search for 'value'
@@ -120,7 +120,7 @@ public class LinkedList : IEnumerable<int>
     }
 
     /// <summary>
-    /// Yields all values in the linked list
+    /// Yields all the values in the linked list
     /// </summary>
     IEnumerator IEnumerable.GetEnumerator()
     {
@@ -133,7 +133,7 @@ public class LinkedList : IEnumerable<int>
     /// </summary>
     public IEnumerator<int> GetEnumerator()
     {
-        var curr = _head; // Start at the beginning since this is a forward iteration.
+        var curr = _head; // Starting at the beginning since this is a forward iteration.
         while (curr is not null)
         {
             yield return curr.Data; // Provide (yield) each item to the user
@@ -147,7 +147,7 @@ public class LinkedList : IEnumerable<int>
     public IEnumerable Reverse()
     {
         // TODO Problem 5
-        yield return 0; // replace this line with the correct yield return statement(s)
+        yield return 0;
     }
 
     public override string ToString()
