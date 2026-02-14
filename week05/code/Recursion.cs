@@ -190,45 +190,38 @@ public static class Recursion
         // currPath.Add((1,2)); // Use this syntax to add to the current path
 
         // TODO Start Problem 5
-        // ADD CODE HERE
-        // Add current position to path
-        currPath.Add((x, y));
+// ADD CODE HERE
+// Add current position to path
+currPath.Add((x, y));
 
-        // Base case: reached the end
-        if (x == maze.GetEndX() && y == maze.GetEndY())
-        {
-            results.Add(currPath.AsString());
-            currPath.RemoveAt(currPath.Count - 1);
-            return;
-        }
+// Base case: reached the end
+if (maze.IsEnd(x, y))
+{
+    results.Add(currPath.AsString());
+    currPath.RemoveAt(currPath.Count - 1);
+    return;
+}
 
-        // Define all possible moves
-        var moves = new List<ValueTuple<int, int>>
-        {
-            (1, 0),   // Right
-            (0, 1),   // Down
-            (-1, 0),  // Left
-            (0, -1)   // Up
-        };
+// Define all possible moves
+var moves = new List<ValueTuple<int, int>>
+{
+    (1, 0),   // Right
+    (0, 1),   // Down
+    (-1, 0),  // Left
+    (0, -1)   // Up
+};
 
-        foreach (var (dx, dy) in moves)
-        {
-            int newX = x + dx;
-            int newY = y + dy;
+foreach (var (dx, dy) in moves)
+{
+    int newX = x + dx;
+    int newY = y + dy;
 
-            // Check if move is valid:
-            // 1. Within maze bounds (if maze has IsValidPosition method)
-            // 2. Not a wall/obstacle
-            // 3. Not already visited in current path
-            if (maze.IsValidPosition(newX, newY) && 
-                !maze.IsWall(newX, newY) && 
-                !currPath.Contains((newX, newY)))
-            {
-                SolveMaze(results, maze, newX, newY, currPath);
-            }
-        }
-
-        // Backtrack
-        currPath.RemoveAt(currPath.Count - 1);
+    // Check if move is valid using the provided IsValidMove method
+    if (maze.IsValidMove(currPath, newX, newY))
+    {
+        SolveMaze(results, maze, newX, newY, currPath);
     }
 }
+
+// Backtrack
+currPath.RemoveAt(currPath.Count - 1);

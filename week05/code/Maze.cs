@@ -62,7 +62,7 @@ public class Maze
     /// </summary>
     public bool IsValidMove(List<ValueTuple<int, int>> currPath, int x, int y)
     {
-        // Can't go outside of the maze boundary (assume maze is a square)
+        // Can't go outside of the maze boundary (assuming maze is a square)
         if (x > Width - 1 || x < 0)
             return false;
         if (y > Height - 1 || y < 0)
