@@ -50,8 +50,7 @@ public static class Trees
     {
         // TODO Start Problem 5  
 
-        //Second attempt
-
+        //Second attempt 
         // Base case: if the range is invalid, stop recursion
         if (first > last)
         {
