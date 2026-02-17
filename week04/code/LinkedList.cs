@@ -195,7 +195,7 @@ public class LinkedList : IEnumerable<int>
             yield return curr.Data; // Provide (yield) each item to the user
             curr = curr.Next; // Go forward in the linked list
         }
-    }
+    } 
 
     /// <summary>
     /// Iterate backward through the Linked List
